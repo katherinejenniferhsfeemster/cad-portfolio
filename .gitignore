@@ -1,0 +1,33 @@
+# FreeCAD
+*.FCStd1
+*.FCBak
+
+# Blender
+*.blend1
+*.blend@
+
+# Rhino
+*.3dmbak
+*.rhl
+
+# OpenSCAD
+*.csg
+
+# Exports we don't commit
+exports/
+*.stl
+*.step
+*.stp
+*.iges
+*.igs
+*.dxf.bak
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db

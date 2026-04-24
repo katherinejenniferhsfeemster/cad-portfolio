@@ -1,0 +1,36 @@
+name: CI — regenerate sample outputs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  openscad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openscad
+      - name: Build bracket
+        run: openscad -o bracket.stl scripts/openscad/parametric_bracket.scad
+      - name: Build gear
+        run: openscad -o gear.stl scripts/openscad/involute_spur_gear.scad
+      - uses: actions/upload-artifact@v4
+        with:
+          name: openscad-stl
+          path: "*.stl"
+
+  ifc-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ifcopenshell
+      - name: Smoke-test audit script
+        run: python -c "import importlib.util, pathlib; spec=importlib.util.spec_from_file_location('m', 'scripts/blender-bim/ifc_wall_audit.py'); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m); print('ok')"
