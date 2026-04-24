@@ -2,6 +2,8 @@
 
 # CAD Portfolio
 
+**by Katherine Feemster**
+
 ### Senior CAD Professional · Parametric Design · BIM · CAD-for-AI
 
 [🌐 **Live portfolio site**](https://katherinejenniferhsfeemster.github.io/cad-portfolio/) · [GitHub repo](https://github.com/katherinejenniferhsfeemster/cad-portfolio)
@@ -95,6 +97,8 @@ Open to remote and contract engagements. This repository is the living portfolio
 ---
 
 ## Contact
+
+**Katherine Feemster**
 
 - GitHub — [@katherinejenniferhsfeemster](https://github.com/katherinejenniferhsfeemster)
 - Live site — [katherinejenniferhsfeemster.github.io/cad-portfolio](https://katherinejenniferhsfeemster.github.io/cad-portfolio/)
