@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Katherine Feemster — Senior CAD Professional</title>
+  <meta name="description" content="Senior CAD portfolio — parametric design, BIM / IFC, and CAD-for-AI datasets. FreeCAD, AutoCAD, Rhino 3D, OpenSCAD, BlenderBIM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true">◴</span>
+      <span>Katherine Feemster</span>
+    </a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#code">Code</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+      <a class="btn btn-outline" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Senior CAD Professional · Parametric design · BIM · CAD-for-AI</p>
+        <h1>I turn CAD into <span class="accent">structured, reproducible geometry</span> — for factories and for AI research.</h1>
+        <p class="lede">
+          A decade across <b>FreeCAD, AutoCAD, Inventor, Rhino 3D, OpenSCAD, BlenderBIM / Bonsai</b>, and IFC. Most of my pipelines are scripts, because parts that can be diffed are parts you can trust.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#work">See the work</a>
+          <a class="btn btn-ghost" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio" target="_blank" rel="noopener">Browse the repo</a>
+        </div>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/bracket_iso.png" alt="Parametric L-bracket rendered from my OpenSCAD script" />
+        <figcaption>Parametric L-bracket — generated live from <code>parametric_bracket.scad</code></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="wrap strip-inner">
+      <span>FreeCAD</span>
+      <span>AutoCAD</span>
+      <span>AutoCAD Mechanical</span>
+      <span>Autodesk Inventor</span>
+      <span>Rhino 3D</span>
+      <span>VectorWorks</span>
+      <span>FreeCAD BIM / IFC</span>
+      <span>BlenderBIM / Bonsai</span>
+      <span>OpenSCAD</span>
+      <span>LibreCAD</span>
+      <span>QCAD CE</span>
+      <span>SolveSpace</span>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="wrap">
+      <h2>Selected projects</h2>
+      <p class="section-lede">Five projects that together cover the full range of CAD I practice — from one-part-fits-all parametric design to IFC-grade BIM to CAD datasets that feed AI models.</p>
+
+      <div class="cards">
+
+        <article class="card feature">
+          <div class="card-media">
+            <img src="assets/bracket_iso.png" alt="Parametric bracket isometric render" />
+          </div>
+          <div class="card-body">
+            <p class="tag">Parametric · OpenSCAD · FreeCAD Python</p>
+            <h3>Parametric Mounting Bracket</h3>
+            <p>One set of parameters drives the 3D solid, the 2D drawing, and the STEP export. Seven design parameters produce an entire family of brackets without re-modeling — counterbored holes for M6 caps, inner fillet, stiffening rib.</p>
+            <p class="meta"><code>scripts/openscad/parametric_bracket.scad</code> · <code>scripts/freecad-python/generate_bracket.py</code></p>
+            <a class="link" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio/tree/main/projects/parametric-bracket" target="_blank" rel="noopener">Read the case study →</a>
+          </div>
+        </article>
+
+        <article class="card feature reverse">
+          <div class="card-media dual">
+            <img src="assets/gear_iso.png" alt="Involute spur gear isometric render" />
+            <img src="assets/gear_top.png" alt="Involute spur gear top view showing 24 true involute teeth" />
+          </div>
+          <div class="card-body">
+            <p class="tag">Mechanical · Inventor · AutoCAD Mechanical · SolveSpace</p>
+            <h3>Two-Stage Reduction Gearbox</h3>
+            <p>9.6:1 reduction, m=2 module, 20° pressure angle, CNC-machined aluminum housing. Gear profiles generated from a true involute script and cross-validated against the Inventor geometry (Hausdorff &lt; 0.02 mm).</p>
+            <p class="meta">GD&amp;T to ASME Y14.5 · RSS + worst-case tolerance stack-up · release-ready shop drawings</p>
+            <a class="link" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio/tree/main/projects/mechanical-gearbox" target="_blank" rel="noopener">Read the case study →</a>
+          </div>
+        </article>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-body">
+              <p class="tag">BIM · IFC 4.3 · FreeCAD BIM · Bonsai</p>
+              <h3>BIM Office Module</h3>
+              <p>~420 m² two-storey office modeled to IFC 4.3 with full Psets, Qtos, material layer sets, and space boundaries. BCF coordination round-trip and automated IfcWall audits in CI.</p>
+              <a class="link" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio/tree/main/projects/bim-office-module" target="_blank" rel="noopener">Case study →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <p class="tag">3D modeling · Rhino · Grasshopper</p>
+              <h3>Freeform Lounge Chair</h3>
+              <p>Class-A surfaced shell with G2 continuity, SubD-to-NURBS conversion, and a Grasshopper definition that drives cushion thickness, seat angle, and stitch count from four sliders.</p>
+              <a class="link" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio/tree/main/projects/rhino-freeform-chair" target="_blank" rel="noopener">Case study →</a>
+            </div>
+          </article>
+
+          <article class="card accent-card">
+            <div class="card-body">
+              <p class="tag">CAD-for-AI · Python · Docker</p>
+              <h3>CAD → AI Dataset Pipeline</h3>
+              <p>10,000+ parametric parts exported as STEP, watertight mesh, 16k point cloud, and per-face labels — plus a prompt-to-CAD eval harness scoring Chamfer, Hausdorff, and voxel IoU.</p>
+              <a class="link" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio/tree/main/projects/ai-dataset-pipeline" target="_blank" rel="noopener">Case study →</a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="code" class="section dark">
+    <div class="wrap">
+      <h2>Code you can actually run</h2>
+      <p class="section-lede">Every script in the repo builds on a clean machine. These renders on this page are produced headlessly from the scripts below — not pre-baked images.</p>
+
+      <div class="code-grid">
+        <div class="code-card">
+          <h4>Parametric bracket — OpenSCAD</h4>
+          <pre><code>openscad -o bracket.stl \
+  scripts/openscad/parametric_bracket.scad</code></pre>
+          <p>Open the Customizer to drive length, depth, thickness, hole count, fillet, and rib from sliders.</p>
+        </div>
+        <div class="code-card">
+          <h4>Involute gear — OpenSCAD</h4>
+          <pre><code>openscad -o gear.stl \
+  -D 'teeth=24' -D 'module_mm=2' \
+  scripts/openscad/involute_spur_gear.scad</code></pre>
+          <p>True involute flanks, correct base / pitch / root circles, helical if you set a twist angle.</p>
+        </div>
+        <div class="code-card">
+          <h4>FreeCAD macro — native solid + STEP</h4>
+          <pre><code>freecadcmd \
+  scripts/freecad-python/generate_bracket.py</code></pre>
+          <p>Builds the same bracket natively in FreeCAD, exports STEP and STL to <code>~/cad-portfolio-exports/</code>.</p>
+        </div>
+        <div class="code-card">
+          <h4>IFC wall audit — IfcOpenShell</h4>
+          <pre><code>python scripts/blender-bim/ifc_wall_audit.py \
+  building.ifc</code></pre>
+          <p>Markdown report: declared vs. geometric length / height, Pset coverage, material assignment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="wrap">
+      <h2>Stack</h2>
+      <div class="stack-grid">
+        <div><h4>Mechanical &amp; product</h4><p>AutoCAD, AutoCAD Mechanical, Autodesk Inventor, SolveSpace, FreeCAD. GD&amp;T, ASME Y14.5, tolerance stack-ups, shop drawings, sheet metal.</p></div>
+        <div><h4>Parametric &amp; code-CAD</h4><p>OpenSCAD, FreeCAD Python, Grasshopper, CadQuery. Parametric families, DFM rules as code, automated drawings.</p></div>
+        <div><h4>3D &amp; surfacing</h4><p>Rhino 3D, Blender, Bonsai. Class-A NURBS, SubD, retopology, UVs, glTF for web.</p></div>
+        <div><h4>BIM &amp; IFC</h4><p>FreeCAD BIM, BlenderBIM / Bonsai, VectorWorks. IFC 2x3 / 4 / 4.3, IfcOpenShell, BCF, clash detection.</p></div>
+        <div><h4>2D drafting</h4><p>LibreCAD, QCAD CE, AutoCAD. ISO / ANSI standards, title-block automation.</p></div>
+        <div><h4>Interchange &amp; QA</h4><p>STEP (AP214 / AP242), IGES, STL, 3MF, DXF, DWG, IFC, glTF. Mesh repair, watertightness.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="wrap about-inner">
+      <div>
+        <h2>About</h2>
+        <p>I'm a senior CAD professional — ten years across mechanical, architectural, and industrial design — now focused on the intersection of CAD and AI research. I care about clean topology, parametric rigor, IFC correctness, and scripts that still build the same part a year from now.</p>
+        <p>Open to remote and contract engagements. The repository linked below is the living portfolio companion to my CV.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/katherinejenniferhsfeemster/cad-portfolio" target="_blank" rel="noopener">Portfolio on GitHub</a>
+          <a class="btn btn-ghost" href="https://github.com/katherinejenniferhsfeemster" target="_blank" rel="noopener">@katherinejenniferhsfeemster</a>
+        </div>
+      </div>
+      <aside class="side-card">
+        <h4>At a glance</h4>
+        <ul>
+          <li>10 years across mechanical, BIM, and code-CAD</li>
+          <li>Every script on this site is reproducible from the repo</li>
+          <li>Building CAD datasets for AI research today</li>
+          <li>Comfortable in Python, Linux, Docker, and Git</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© 2026 Katherine Feemster. Built with a lot of Python, FreeCAD, and OpenSCAD.</span>
+    <a href="https://github.com/katherinejenniferhsfeemster/cad-portfolio" target="_blank" rel="noopener">Source ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>

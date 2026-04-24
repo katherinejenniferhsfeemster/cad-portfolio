@@ -3,6 +3,8 @@
 # Katherine Feemster
 ### Senior CAD Professional · Parametric Design · BIM · CAD-for-AI
 
+[🌐 **Live portfolio site**](https://katherinejenniferhsfeemster.github.io/cad-portfolio/) · [GitHub repo](https://github.com/katherinejenniferhsfeemster/cad-portfolio)
+
 [![FreeCAD](https://img.shields.io/badge/FreeCAD-Expert-CB333B?logo=freecad&logoColor=white)](https://www.freecad.org/)
 [![AutoCAD](https://img.shields.io/badge/AutoCAD-Expert-E51050?logo=autodesk&logoColor=white)](https://www.autodesk.com/products/autocad)
 [![Rhino 3D](https://img.shields.io/badge/Rhino%203D-Advanced-801010?logo=rhinoceros&logoColor=white)](https://www.rhino3d.com/)
@@ -18,6 +20,8 @@
 ---
 
 ## About
+
+![Parametric bracket render](docs/assets/bracket_iso.png)
 
 I'm a senior CAD professional with a decade of hands-on experience spanning mechanical design, architectural BIM, industrial product modeling, and — most recently — building **CAD datasets for AI research**. I care about clean topology, parametric rigor, IFC correctness, and scripts that still build the same part a year from now.
 
@@ -42,6 +46,13 @@ Every project folder contains a short README, the source files (or scripts that 
 ---
 
 ## Runnable Code Samples
+
+Every image on the [live site](https://katherinejenniferhsfeemster.github.io/cad-portfolio/) is rendered headlessly from the scripts in this repo.
+
+| | |
+| :-: | :-: |
+| ![Bracket iso](docs/assets/bracket_iso.png) | ![Gear iso](docs/assets/gear_iso.png) |
+| Parametric bracket (OpenSCAD) | True-involute spur gear (OpenSCAD) |
 
 These scripts are real and will build on your machine:
 

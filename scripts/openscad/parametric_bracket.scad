@@ -3,17 +3,22 @@
 // Author: Katherine Feemster
 // License: MIT
 //
-// A production-style parametric mounting bracket.
-// Every dimension below is a design parameter — change the
-// values and the bracket (including drawings) updates.
+// A production-style parametric mounting bracket:
+//   - horizontal base flange with a grid of counterbored holes
+//   - vertical leg with through-holes
+//   - inner fillet between the two flanges
+//   - optional triangular stiffening rib
 //
-// Render:  F5 preview, F6 for final render, then File > Export > STL / DXF
+// Every dimension below is a design parameter — change it and
+// the solid (plus derived STL / DXF) updates.
+//
+// F5 preview, F6 for final render, then File > Export > STL / DXF
 // ============================================================
 
 /* [Overall dimensions] */
-length        = 80;   // mm, along X
-height        = 60;   // mm, along Z (vertical leg)
-depth         = 40;   // mm, along Y
+length        = 80;   // mm, along X (width of both flanges)
+height        = 60;   // mm, along Z (vertical leg height)
+depth         = 40;   // mm, along Y (base flange depth)
 thickness     = 6;    // mm, material thickness
 
 /* [Holes] */
@@ -21,7 +26,7 @@ hole_diameter        = 6.6;  // M6 clearance
 counterbore_diameter = 11;   // M6 cap head
 counterbore_depth    = 4;
 hole_inset           = 10;   // distance from edges
-hole_count_base      = 4;    // holes in base flange
+hole_count_base      = 4;    // holes in base flange (2x2 grid)
 hole_count_vertical  = 2;    // holes in vertical leg
 
 /* [Features] */
@@ -33,38 +38,48 @@ rib_thickness = 4;
 $fn = 64;
 
 // ------------------------------------------------------------
-module rounded_inner_corner(r, t, l) {
-    // Creates the inner fillet between the two flanges
-    difference() {
-        cube([t + r, l, t + r]);
-        translate([t + r, -0.5, t + r])
-            rotate([-90, 0, 0])
-                cylinder(h = l + 1, r = r);
-    }
-}
-
-module rib() {
-    // Triangular stiffener on the back face
-    rib_h = height - thickness - 4;
-    rib_l = depth  - thickness - 4;
-    translate([length/2 - rib_thickness/2, thickness, thickness])
-        linear_extrude(height = rib_thickness)
-            polygon([[0,0], [rib_l, 0], [0, rib_h]]);
-}
-
 module counterbored_hole(d_through, d_cbore, cbore_depth, total_h) {
     union() {
-        cylinder(h = total_h + 0.2, d = d_through, center = false);
+        cylinder(h = total_h + 0.2, d = d_through);
         translate([0, 0, total_h - cbore_depth])
-            cylinder(h = cbore_depth + 0.1, d = d_cbore);
+            cylinder(h = cbore_depth + 0.2, d = d_cbore);
     }
+}
+
+// A fillet that bridges the inside corner between the base (on XY)
+// and the vertical leg (on XZ, at y=thickness). Built as a quarter-
+// cylinder inscribed in a (t+r) x (t+r) cross section.
+module inner_fillet() {
+    r = fillet_radius;
+    // Solid that fills the corner, minus a quarter-cylinder.
+    translate([0, 0, 0]) {
+        difference() {
+            translate([0, thickness, thickness])
+                cube([length, r, r]);
+            translate([-0.5, thickness + r, thickness + r])
+                rotate([0, 90, 0])
+                    cylinder(h = length + 1, r = r);
+        }
+    }
+}
+
+// Triangular rib in the XZ plane, centered on the bracket's X.
+// Right-angle at the inside corner, hypotenuse running diagonally.
+module rib() {
+    rib_h = height - thickness - 4;    // along Z
+    rib_l = depth  - thickness - 4;    // along Y
+    // extrude a triangle in Y-Z plane along the X axis
+    translate([length/2 - rib_thickness/2, thickness, thickness])
+        rotate([90, 0, 90])            // YZ polygon → extrude along X
+            linear_extrude(height = rib_thickness)
+                polygon([[0, 0], [rib_l, 0], [0, rib_h]]);
 }
 
 module base_flange() {
     difference() {
         cube([length, depth, thickness]);
 
-        // grid of counterbored holes in the base
+        // 2 × 2 grid of counterbored holes
         rows = 2;
         cols = hole_count_base / rows;
         x_step = (length - 2*hole_inset) / max(cols - 1, 1);
@@ -83,9 +98,10 @@ module base_flange() {
 
 module vertical_leg() {
     difference() {
+        // The leg sits on the back edge of the base (y = 0 .. thickness)
         cube([length, thickness, height]);
 
-        // holes in the vertical leg
+        // Through-holes spaced along the leg
         x_step = (length - 2*hole_inset) / max(hole_count_vertical - 1, 1);
         for (i = [0 : hole_count_vertical - 1])
             translate([hole_inset + i*x_step,
@@ -100,9 +116,7 @@ module bracket() {
     union() {
         base_flange();
         vertical_leg();
-        // inner fillet
-        translate([0, 0, 0])
-            rounded_inner_corner(fillet_radius, thickness, length);
+        inner_fillet();
         if (rib_enabled) rib();
     }
 }
@@ -110,7 +124,6 @@ module bracket() {
 bracket();
 
 // ------------------------------------------------------------
-// echo summary so the terminal log doubles as a parts list
 echo("=== Parametric Bracket ===");
 echo(length=length, depth=depth, height=height, thickness=thickness);
 echo(base_holes=hole_count_base, leg_holes=hole_count_vertical);
